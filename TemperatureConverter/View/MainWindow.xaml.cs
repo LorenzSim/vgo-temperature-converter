@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,19 +25,44 @@ namespace View
         {
             InitializeComponent();
         }
+    }
 
-        private void ConvertToCelsius(object sender, RoutedEventArgs e)
+    public class CelsiusConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            double fahrenheit = double.Parse(fahrenheitTextBox.Text);
-            double celsius = (fahrenheit - 32) / 1.8;
-            celsiusTextBox.Text = celsius.ToString();
+            var kelvin = (double)value;
+            var celsius = kelvin - 273.15;
+
+            return celsius.ToString();
         }
 
-        private void ConvertToFahrenheit(object sender, RoutedEventArgs e)
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            double celsius = double.Parse(celsiusTextBox.Text);
-            double fahreneit = celsius * 1.8 + 32;
-            fahrenheitTextBox.Text = fahreneit.ToString();
+            var celsius = double.Parse((string)value);
+            var kelvin = celsius + 273.15;
+
+            return kelvin;
         }
     }
+
+    public class FahrenheitConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            var kelvin = (double)value;
+            var fahrenheit = (kelvin - 273.15) * 9 / 5 + 32;
+
+            return fahrenheit.ToString();
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            var fahrenheit = double.Parse((string)value);
+            var kelvin = (fahrenheit - 32) * 5 / 9 + 273.15;
+
+            return kelvin;
+        }
+    }
+
 }
