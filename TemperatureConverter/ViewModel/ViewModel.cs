@@ -4,8 +4,8 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-namespace View
+using Model;
+namespace ViewModel
 {
     public class ConverterViewModel : INotifyPropertyChanged
     {
