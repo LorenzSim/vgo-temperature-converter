@@ -55,6 +55,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CelsiusTemperatureScale.cs" />
+    <Compile Include="FahrenheitTemperatureScale.cs" />
+    <Compile Include="KelvinTemperatureScale.cs" />
+    <Compile Include="TemperatureScale.cs" />
+    <Compile Include="ViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
