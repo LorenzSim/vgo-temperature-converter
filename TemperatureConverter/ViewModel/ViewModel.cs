@@ -57,6 +57,7 @@ namespace ViewModel
 
             double minimum = temperatureScale.ConvertFromKelvin(0);
             double maximum = temperatureScale.ConvertFromKelvin(1000);
+
             this.Increment = new AddCommand(this.Temperature, 1, minimum, maximum);
             this.Decrement = new AddCommand(this.Temperature, -1, minimum, maximum);
         }
